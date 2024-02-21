@@ -1,0 +1,19 @@
+{
+  "xxx": "إضافة إلى المفضلة",
+  "$vuetify": {
+    "open": "يفتح",
+    "close": "إغلاق",
+    "datePicker": {
+      "title": "حدد اليوم",
+      "header": "أدخل اليوم",
+      "cancel": "يلغي",
+      "ok": "يقبل",
+      "input": {
+        "placeholder": "أدخل اليوم"
+      }
+    },
+    "input": {
+      "clear": "يمسح"
+    }
+  }
+}

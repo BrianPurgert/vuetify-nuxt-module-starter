@@ -1,0 +1,67 @@
+/* h3 breaks SEO => replaced with h2 with the same size */
+.home-content h2 {
+  margin-top: 2rem;
+  font-size: 1.35rem;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+img.resizable-img {
+  width: unset;
+  height: unset;
+}
+
+.tagline {
+  white-space: pre-wrap;
+}
+
+details > summary:hover {
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-block.tip code,
+.custom-block.info code,
+.custom-block.warning code,
+.custom-block.danger code {
+  font-size: var(--vp-custom-block-code-font-size);
+  font-weight: 700;
+}
+
+.info.custom-block > p > code,
+.info.custom-block > p > a:hover {
+  color: var(--vp-c-text-2);
+  opacity: 1;
+}
+.tip.custom-block > p > code,
+.tip.custom-block > p > a:hover {
+  color: var(--vp-c-brand-1);
+  opacity: 1;
+}
+.warning.custom-block > p > code,
+.warning.custom-block > p > a:hover {
+  color: var(--vp-c-warning-1);
+  opacity: 1;
+}
+.danger.custom-block > p > code,
+.danger.custom-block > p > a:hover {
+  color: var(--vp-c-danger-1);
+  opacity: 1;
+}
+
+/* dark/light radial transition */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root),
+.dark::view-transition-new(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root),
+.dark::view-transition-old(root) {
+  z-index: 9999;
+}
