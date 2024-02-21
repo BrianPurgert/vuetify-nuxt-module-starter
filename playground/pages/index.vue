@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// import { useLocale, useRtl } from 'vuetify'
+
 import { ssrClientHintsConfiguration } from 'virtual:vuetify-ssr-client-hints-configuration'
 import prependAvatar from '~/assets/logo.svg'
 
@@ -16,8 +16,8 @@ const value = reactive<{
   name2: undefined,
   name3: undefined,
 })
-const { locales, t } = useI18n()
-const { current } = useLocale()
+
+
 const { isRtl } = useRtl()
 const x = useDate()
 // eslint-disable-next-line no-console
@@ -33,7 +33,7 @@ const ssrClientHints = useNuxtApp().$ssrClientHints
 const { width, height, md } = useDisplay()
 const theme = useTheme()
 
-const enableToogleTheme = computed(() => {
+const enableToggleTheme = computed(() => {
   if (ssrClientHintsConfiguration.prefersColorScheme && ssrClientHintsConfiguration.prefersColorSchemeOptions)
     return !ssrClientHintsConfiguration.prefersColorSchemeOptions.useBrowserThemeOnly
 
@@ -52,10 +52,7 @@ watch(isRtl, (x) => {
   // rtl.value = x
 }, { immediate: true })
 
-watch(current, () => {
-  // eslint-disable-next-line no-console
-  console.log('current', t('xxx', { locale: current.value }))
-})
+
 </script>
 
 <template>
@@ -74,50 +71,30 @@ watch(current, () => {
       <pre>{{ width }} x {{ height }} (md {{ md }}?)</pre>
       <div>
         <h2>useTheme: {{ theme.global.name }}</h2>
-        <v-btn v-if="enableToogleTheme" @click="toogleTheme">
+        <v-btn v-if="enableToggleTheme" @click="toogleTheme">
           toogle theme
         </v-btn>
       </div>
     </div>
-    <div>Vuetify useLocale(): {{ current }}</div>
-    <div>$i18n current: {{ $i18n.locale }}</div>
-    <div>$vuetify.locale.current: {{ $vuetify.locale.current }}</div>
-    <div>t without locale: {{ t('xxx') }}</div>
-    <div>t with I18N locale: {{ t('xxx', { locale: $i18n.locale }) }}</div>
-    <div>t with Vuetify current locale: {{ t('xxx', { locale: current }) }}</div>
-    <div>$t {{ $t('xxx') }}</div>
-    <div>$vuetify.locale.t {{ $vuetify.locale.t('xxx') }}</div>
-    <v-select
-      v-model="current"
-      :items="locales"
-      item-title="name"
-      item-value="code"
-      outlined
-    />
-    <v-text-field
-      v-model="value.name1"
-      :label="t('xxx')"
-      hint="name 1"
-      persistent-hint
-      outlined
-      clearable
-    />
-    <v-btn>{{ t('xxx') }}</v-btn>
-    <v-locale-provider locale="es-ES">
-      <v-btn>{{ $vuetify.locale.t('xxx') }}</v-btn>
-    </v-locale-provider>
-    <!--    <v-icon icon="fas fa-home" /> -->
-    <!--    <v-icon icon="$account" /> -->
+
+
+
+
+
+
+
+
+
+
+        <v-icon icon="fas fa-home" />
+
     <v-icon class="i-mdi:account" />
     <i class="i-mdi:account block" />
     <v-checkbox v-model="isRtl" label="isRtl" readonly :true-value="true" :false-value="false" />
     <v-checkbox v-model="isRtl" label="isRtl" readonly :true-value="true" :false-value="false" false-icon="i-mdi:account" />
     <div style="display: flex">
       <v-date-picker />
-      <!-- we cannot use this when using lazy: missing messages since ar-EG not being loaded -->
-      <!--      <v-locale-provider locale="ar-EG" rtl>
-        <v-date-picker />
-      </v-locale-provider> -->
+
     </div>
   </div>
 </template>

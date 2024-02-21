@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ssrClientHintsConfiguration } from 'virtual:vuetify-ssr-client-hints-configuration'
 
-const { locales } = useI18n()
+
 const { current } = useLocale()
 const theme = useTheme()
 
@@ -25,7 +25,7 @@ function toogleTheme() {
     <div>
       <h2>useTheme: {{ theme.global.name }}</h2>
       <v-btn v-if="enableToogleTheme" @click="toogleTheme">
-        toogle theme
+        toggle theme
       </v-btn>
     </div>
     <v-select

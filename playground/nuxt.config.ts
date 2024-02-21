@@ -1,4 +1,4 @@
-import { availableLocales, langDir } from './config/i18n'
+
 import LayerModule from './layer-module'
 
 // import { transformAssetUrls } from "vite-plugin-vuetify";
@@ -11,27 +11,8 @@ export default defineNuxtConfig({
     autoImport: true,
     injectAtEnd: true,
   },
-  modules: ['@unocss/nuxt', '@nuxtjs/i18n', LayerModule, 'vuetify-nuxt-module'],
-  i18n: {
-    locales: availableLocales,
-    lazy: true,
-    strategy: 'no_prefix',
-    detectBrowserLanguage: false, /* {
-      fallbackLocale: 'en-US',
-      useCookie: true,
-    },
-    useCookie: true,
-    cookieKey: 'custom-locale', */
-    langDir,
-    defaultLocale: 'en-US',
-    // types: 'composition',
-    // pages: undefined,
-    dynamicRouteParams: false,
-    skipSettingLocaleOnNavigate: false,
-    // debug: true,
-    vueI18n: '/config/i18n.config.ts',
-  },
-  vuetify: {
+  modules: ['@unocss/nuxt', LayerModule, 'vuetify-nuxt-module'],
+   vuetify: {
     moduleOptions: {
       includeTransformAssetsUrls: {
         'v-card': [
